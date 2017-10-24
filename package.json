@@ -6,7 +6,6 @@
   "dependencies": {
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
-    "nodemon": "^1.12.1",
     "path": "^0.12.7"
   },
   "devDependencies": {},
@@ -14,6 +13,14 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gitKendra/FriendFinder.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gitKendra/FriendFinder/issues"
+  },
+  "homepage": "https://github.com/gitKendra/FriendFinder#readme",  
   "keywords": [],
   "author": "",
   "license": "ISC"
