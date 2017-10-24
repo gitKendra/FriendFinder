@@ -1,19 +1,16 @@
-const express = require("express");
-const htmlRoutes = express.Router();
+var express = require('express');
+var router = express.Router();
 
-// Basic route that sends the user first to the AJAX Page
-htmlRoutes.get("/", function(req, res) {
-	res.send("html GET /");
-	//	res.sendFile(path.join(__dirname, "/app/public/home.html"));
-  });
-
-htmlRoutes.get('/survey', function(req, res){
-	res.send("html GET /survey");
-	// res.sendFile(path.join(__dirname, "/app/public/survey.html"));	
+router.get('/', function(req, res) {
+	res.sendFile('FriendFinder/app/public/home.html', {'root': '../'});
 });
 
+router.get('/survey', function(req, res){
+	res.sendFile('FriendFinder/app/public/survey.html', {'root': '../'});
+});
 
-// TO-DO : a default, catch-all route that leads to home.html which displays the homepage
-
-
-module.exports = htmlRoutes;
+// Catch all route
+router.get('/:home', function(req, res) {
+	res.sendFile('FriendFinder/app/public/home.html', {'root': '../'});
+});
+module.exports = router;

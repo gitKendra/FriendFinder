@@ -1,37 +1,24 @@
 // Dependencies
 const express = require('express');
-const path = require('path');
-const bodyParser = require("body-parser");
-// const apiRoutes = require('./apiRoutes');
-// const htmlRoutes = require('./htmlRoutes');
-const routes = require('./app/routing');
-const app = express();
-const PORT = process.env.PORT || 3000;
+const bodyParser = require('body-parser');
+var app = express();
 
-// Connect all routes to application
-app.use('/', routes);
+// Sets an initial port. We"ll use this later in our listener
+const PORT = process.env.PORT || 3000;
 
 // Sets up the Express app to handle data parsing
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+// Allow files in public folder to be served static
+app.use(express.static(__dirname + '/app/public'));
 
-// app.use('/app/routing/apiRoutes', apiRoutes);
-// app.use('/app/routing/htmlRoutes', htmlRoutes);
+// Routers
+app.use(require('./app/routing/apiRoutes'));
+app.use(require('./app/routing/htmlRoutes'));
 
-// // Routes
-// app.get("/", function(req, res) {
-// 	console.log("GET /");
-// 	res.sendFile(path.join(__dirname, "/app/public/home.html"));
-// });
 
-// app.get('/survey', function(req, res){
-//     console.log("GET /survey");
-//     res.sendFile(path.join(__dirname, "/app/public/survey.html"));
-// });
-
-// Starts the server to begin listening
-// =============================================================
+// Listener
 app.listen(PORT, function() {
-console.log("App listening on PORT " + PORT);
+  console.log("App listening on PORT: " + PORT);
 });
